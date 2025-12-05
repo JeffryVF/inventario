@@ -1,0 +1,2113 @@
+/* ===== PALETA DE COLORES PERSONALIZADA - TEMA VERDE NATURAL ===== */
+:root {
+    /* Paleta Principal - Verdes Naturales */
+    --color-primary: #3E7B27;
+    /* Verde medio - Color principal */
+    --color-primary-dark: #123524;
+    /* Verde muy oscuro - Acentos */
+    --color-primary-light: #85A947;
+    /* Verde claro - Elementos secundarios */
+    --color-primary-pale: #EFE3C2;
+    /* Beige cálido - Fondos suaves */
+
+    /* Colores Secundarios basados en la paleta */
+    --color-secondary: #85A947;
+    /* Verde claro como secundario */
+    --color-secondary-dark: #3E7B27;
+    /* Verde medio para contraste */
+    --color-secondary-light: #A8C55A;
+    /* Verde más claro (generado) */
+
+    /* Estados de acción - Adaptados a la paleta verde */
+    --color-success: #85A947;
+    /* Verde claro para éxito */
+    --color-success-dark: #3E7B27;
+    /* Verde medio para éxito oscuro */
+    --color-success-light: #A8C55A;
+    /* Verde brillante para éxito claro */
+    --color-success-pale: #F5F1E8;
+    /* Beige muy suave para fondos de éxito */
+
+    --color-warning: #D4A574;
+    /* Naranja cálido que combina con beige */
+    --color-warning-dark: #B8956A;
+    /* Naranja oscuro */
+    --color-warning-light: #E6C199;
+    /* Naranja claro */
+    --color-warning-pale: #F7F3ED;
+    /* Beige con tinte naranja */
+
+    --color-danger: #C85A54;
+    /* Rojo terroso que combina */
+    --color-danger-dark: #A84A45;
+    /* Rojo oscuro terroso */
+    --color-danger-light: #D67B76;
+    /* Rojo claro */
+    --color-danger-pale: #F4EAE9;
+    /* Rosa muy suave */
+
+    --color-info: #6B9080;
+    /* Verde azulado para información */
+    --color-info-dark: #4A6B5D;
+    /* Verde azulado oscuro */
+    --color-info-light: #8BA895;
+    /* Verde azulado claro */
+    --color-info-pale: #E8F2EF;
+    /* Verde azulado muy suave */
+
+    /* Grises y neutros - Tonos cálidos que complementan el verde */
+    --color-white: #ffffff;
+    --color-gray-50: #FAFAF8;
+    /* Blanco con tinte cálido */
+    --color-gray-100: #F5F3F0;
+    /* Gris muy claro cálido */
+    --color-gray-200: #E8E6E1;
+    /* Gris claro cálido */
+    --color-gray-300: #D4D0C8;
+    /* Gris medio cálido */
+    --color-gray-400: #A8A39A;
+    /* Gris que complementa el beige */
+    --color-gray-500: #736E65;
+    /* Gris medio terroso */
+    --color-gray-600: #5A5248;
+    /* Gris oscuro cálido */
+    --color-gray-700: #3D3A32;
+    /* Gris muy oscuro cálido */
+    --color-gray-800: #2A281F;
+    /* Casi negro con tinte cálido */
+    --color-gray-900: #1A1813;
+    /* Negro cálido natural */
+
+    /* Gradientes - Tema verde natural */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    --gradient-success: linear-gradient(135deg, var(--color-success) 0%, var(--color-success-light) 100%);
+    --gradient-subtle: linear-gradient(135deg, var(--color-primary-pale) 0%, var(--color-gray-50) 100%);
+    --gradient-warm: linear-gradient(135deg, var(--color-primary-pale) 0%, #F7F3ED 100%);
+
+    /* Sombras con tonos más cálidos */
+    --shadow-sm: 0 1px 2px 0 rgba(18, 53, 36, 0.08);
+    --shadow-md: 0 4px 6px -1px rgba(18, 53, 36, 0.12);
+    --shadow-lg: 0 10px 15px -3px rgba(18, 53, 36, 0.15);
+    --shadow-xl: 0 20px 25px -5px rgba(18, 53, 36, 0.18);
+}
+
+/* Estilos Generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-800);
+}
+
+/* Estilos del Login */
+.login-container {
+    min-height: 100vh;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-form {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 400px;
+    animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-form .form-control {
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: 1px solid var(--color-gray-300);
+    transition: all 0.3s ease;
+}
+
+.login-form .form-control:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+.login-form .btn {
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.login-form .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Estilos del Dashboard */
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    border: none;
+}
+
+/* Estilos de la tabla */
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.table tbody td {
+    border-color: var(--color-gray-200);
+    vertical-align: middle;
+    padding: 1rem 0.75rem;
+    color: var(--color-dark) !important;
+    background-color: var(--color-white);
+}
+
+.table tbody tr:hover {
+    background-color: var(--color-primary-pale) !important;
+}
+
+.table tbody tr:hover td {
+    color: var(--color-dark) !important;
+}
+
+/* Iconos y contenido en tabla */
+.table tbody td .fas,
+.table tbody td .bi,
+.table tbody td .fa,
+.table tbody td i {
+    color: var(--color-dark) !important;
+}
+
+/* Hover de tabla sin cambios en iconos */
+
+/* Iconos libres sin cambios en hover */
+
+.table tbody td .btn .fas,
+.table tbody td .btn .bi,
+.table tbody td .btn .fa,
+.table tbody td .btn i {
+    color: inherit !important;
+}
+
+/* Colores específicos para botones de acción */
+.table tbody td .btn-edit .fas,
+.table tbody td .btn-edit .bi,
+.table tbody td .btn-edit i {
+    color: var(--color-white) !important;
+}
+
+.table tbody td .btn-delete .fas,
+.table tbody td .btn-delete .bi,
+.table tbody td .btn-delete i {
+    color: var(--color-white) !important;
+}
+
+.table tbody td .btn-qr .fas,
+.table tbody td .btn-qr .bi,
+.table tbody td .btn-qr i {
+    color: var(--color-primary-dark) !important;
+}
+
+/* Botones en tabla sin hover específico en iconos */
+
+/* Botones outline y pequeños sin hover específico en iconos */
+
+/* Icono de Gestión de Productos en blanco */
+.card .card-header h5 .fas,
+.card .card-header h5 .bi,
+.card .card-header h5 .fa,
+.card .card-header h5 i,
+.card-header .fas,
+.card-header .bi,
+.card-header .fa,
+.card-header i {
+    color: var(--color-white) !important;
+}
+
+/* Números y texto en tabla */
+.table tbody td,
+.table tbody td span,
+.table tbody td strong {
+    color: var(--color-dark) !important;
+}
+
+/* Botones pequeños en tabla */
+.table tbody td .btn-sm {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.table tbody td .btn-sm .fas,
+.table tbody td .btn-sm .bi {
+    font-size: 0.75rem;
+}
+
+/* Asegurar visibilidad de números y precios */
+.table tbody td:nth-child(4),
+/* Stock */
+.table tbody td:nth-child(5),
+/* Stock Mínimo */
+.table tbody td:nth-child(6)
+
+/* Precio */
+    {
+    font-weight: 600;
+    color: var(--color-dark) !important;
+}
+
+/* QR y códigos */
+.table tbody td code,
+.table tbody td .badge {
+    background-color: var(--color-gray-100) !important;
+    color: var(--color-dark) !important;
+    border: 1px solid var(--color-gray-200);
+}
+
+/* Badges de estado */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Estilos específicos para tabla - máxima prioridad */
+.table tbody td {
+    color: var(--color-dark) !important;
+}
+
+.table tbody td .status-badge {
+    color: inherit !important;
+}
+
+.table tbody td .status-instock {
+    color: var(--color-success-dark) !important;
+}
+
+.table tbody td .status-lowstock {
+    color: var(--color-warning-dark) !important;
+}
+
+.table tbody td .status-outstock {
+    color: var(--color-danger-dark) !important;
+}
+
+.status-instock {
+    background-color: var(--color-success-pale);
+    color: var(--color-success-dark);
+}
+
+.status-lowstock {
+    background-color: var(--color-warning-pale);
+    color: var(--color-warning-dark);
+}
+
+.status-outstock {
+    background-color: var(--color-danger-pale);
+    color: var(--color-danger-dark);
+    border: 1px solid var(--color-danger);
+}
+
+/* Botones de acción */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-action {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+    transform: translateY(-1px);
+}
+
+.btn-edit {
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary-dark);
+    color: var(--color-white);
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-edit:hover {
+    background-color: var(--color-primary-dark);
+    border: 2px solid var(--color-primary-dark);
+    color: var(--color-white);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-delete {
+    background-color: var(--color-danger);
+    border: 2px solid var(--color-danger-dark);
+    color: var(--color-white);
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-delete:hover {
+    background-color: var(--color-danger-dark);
+    border: 2px solid var(--color-danger-dark);
+    color: var(--color-white);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-qr {
+    background-color: var(--color-primary-pale);
+    color: var(--color-primary-dark);
+    border: 2px solid var(--color-primary);
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.btn-qr:hover {
+    background-color: var(--color-warning-light);
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+
+/* Formularios */
+.form-control,
+.form-select {
+    border-radius: 8px;
+    border: 1px solid var(--color-gray-300);
+    padding: 10px 12px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+.modal-content {
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--shadow-xl);
+}
+
+.modal-header {
+    border-bottom: 1px solid #f1f3f4;
+    padding: 1.5rem;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--color-gray-200);
+    padding: 1rem 2rem 1.5rem;
+}
+
+/* Estados de loading */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Animaciones */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .login-form {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+
+    .modal-body {
+        padding: 1rem;
+    }
+}
+
+/* Estilos para campos requeridos */
+.form-label::after {
+    content: "";
+}
+
+.form-label:has(+ input[required])::after,
+.form-label:has(+ select[required])::after,
+.form-label:has(+ textarea[required])::after {
+    content: " *";
+    color: var(--color-danger);
+}
+
+/* Mejoras visuales adicionales */
+.navbar {
+    box-shadow: var(--shadow-md);
+}
+
+.container-fluid {
+    animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Indicadores de validación */
+.is-valid {
+    border-color: var(--color-success) !important;
+}
+
+.is-invalid {
+    border-color: var(--color-danger) !important;
+}
+
+.valid-feedback {
+    color: var(--color-success);
+    font-size: 0.875rem;
+}
+
+.invalid-feedback {
+    color: var(--color-danger);
+    font-size: 0.875rem;
+}
+
+/* Estilos para mensajes de estado */
+.alert {
+    border-radius: 10px;
+    border: none;
+}
+
+.alert-success {
+    background-color: var(--color-success-pale);
+    color: var(--color-success-dark);
+}
+
+.alert-danger {
+    background-color: var(--color-danger-pale);
+    color: var(--color-danger-dark);
+}
+
+.alert-info {
+    background-color: var(--color-info-pale);
+    color: var(--color-info-dark);
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ocultar scroll en elementos específicos si es necesario */
+.table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: var(--color-gray-100);
+    border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: var(--color-gray-400);
+    border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-500);
+}
+
+/* Marca de derechos de autor flotante mejorada */
+.copyright-badge {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.95), rgba(118, 75, 162, 0.9));
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    box-shadow:
+        0 8px 25px rgba(102, 126, 234, 0.3),
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    padding: 12px 18px;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(15px);
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+}
+
+.copyright-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.copyright-badge:hover::before {
+    left: 100%;
+}
+
+.copyright-badge:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow:
+        0 12px 35px rgba(62, 123, 39, 0.4),
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(145deg, var(--color-primary), var(--color-primary-dark));
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.copyright-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.copyright-content i {
+    font-size: 18px;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    animation: copyrightIconPulse 3s ease-in-out infinite;
+}
+
+.copyright-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    line-height: 1.3;
+    text-align: left;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.3px;
+}
+
+.copyright-text small {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    display: block;
+    margin-top: 1px;
+    opacity: 0.95;
+}
+
+/* Animación del icono */
+@keyframes copyrightIconPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+    .copyright-badge {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        border-radius: 20px;
+    }
+
+    .copyright-content {
+        gap: 8px;
+    }
+
+    .copyright-content i {
+        font-size: 16px;
+    }
+
+    .copyright-text {
+        font-size: 13px;
+    }
+
+    .copyright-text small {
+        font-size: 10px;
+    }
+}
+
+/* Animación de entrada mejorada */
+@keyframes fadeInUpBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+    }
+
+    60% {
+        opacity: 0.8;
+        transform: translateY(-5px) scale(1.05);
+    }
+
+    80% {
+        opacity: 0.9;
+        transform: translateY(2px) scale(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.copyright-badge {
+    animation: fadeInUpBounce 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.2s both;
+}
+
+/* Estilos para QR */
+.qr-scanner-manual {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.qr-scanner-manual .display-1 {
+    font-size: 4rem;
+    opacity: 0.8;
+    animation: qrPulse 2s ease-in-out infinite;
+}
+
+@keyframes qrPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+/* Estilos para el escáner de cámara */
+#qr-reader {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: var(--color-gray-50);
+    position: relative;
+}
+
+#qr-reader video {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 8px;
+}
+
+#cameraStatus {
+    min-height: 20px;
+}
+
+.nav-tabs .nav-link {
+    color: var(--color-gray-500);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.manual-input-container {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--color-gray-200);
+    box-shadow: var(--shadow-md);
+}
+
+.manual-input-container .form-control-lg {
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+}
+
+#qrCodeDisplay {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#qrCodeDisplay canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.qr-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Indicador de detección QR */
+.qr-scanner-container {
+    justify-content: center;
+    position: relative;
+}
+
+.qr-detection-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    animation: qrDetectionPulse 0.6s ease-out;
+}
+
+.qr-detection-content {
+    text-align: center;
+    animation: qrDetectionBounce 0.5s ease-out;
+}
+
+@keyframes qrDetectionPulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes qrDetectionBounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Mejora para video QR */
+#qr-video {
+    border: 3px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.qr-scanning #qr-video {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(62, 123, 39, 0.3);
+}
+
+.qr-detected #qr-video {
+    border-color: #198754;
+    box-shadow: 0 0 15px rgba(25, 135, 84, 0.5);
+}
+
+/* Indicador de carga del escáner QR */
+.qr-loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    min-width: 300px;
+    height: 300px;
+    background: var(--gradient-subtle);
+    border-radius: 12px;
+    border: 2px dashed var(--color-gray-300);
+    box-sizing: border-box;
+}
+
+.qr-loading-content {
+    text-align: center;
+    animation: loadingPulse 2s ease-in-out infinite;
+}
+
+.qr-loading-spinner {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    animation: loadingSpin 1.5s linear infinite;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.qr-loading-spinner i {
+    font-size: 24px;
+    color: white;
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+.loading-dots span {
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    animation: loadingDots 1.5s ease-in-out infinite;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes loadingSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loadingPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes loadingDots {
+
+    0%,
+    20%,
+    80%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+/* Overlay del escáner QR con esquinas */
+.qr-scanner-overlay {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+    border-radius: 8px;
+    overflow: hidden;
+    /* Las dimensiones se establecerán dinámicamente por JavaScript */
+}
+
+/* Marco sutil para el área de escaneo */
+.qr-scanner-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(13, 110, 253, 0.3);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+/* Esquinas del escáner QR */
+.qr-corner {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--color-primary);
+    animation: qrCornerPulse 2s ease-in-out infinite;
+    z-index: 6;
+}
+
+.qr-corner-top-left {
+    top: 5px;
+    left: 5px;
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: 12px;
+}
+
+.qr-corner-top-right {
+    top: 5px;
+    right: 5px;
+    border-left: none;
+    border-bottom: none;
+    border-top-right-radius: 12px;
+}
+
+.qr-corner-bottom-left {
+    bottom: 5px;
+    left: 5px;
+    border-right: none;
+    border-top: none;
+    border-bottom-left-radius: 12px;
+}
+
+.qr-corner-bottom-right {
+    bottom: 5px;
+    right: 5px;
+    border-left: none;
+    border-top: none;
+    border-bottom-right-radius: 12px;
+}
+
+/* Línea de escaneo animada */
+.qr-scan-line {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 10%, var(--color-primary) 20%, var(--color-primary-light) 50%, var(--color-primary) 80%, transparent 90%);
+    animation: qrScanLine 2.5s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(62, 123, 39, 0.9), 0 0 10px rgba(133, 169, 71, 0.6);
+    border-radius: 2px;
+    z-index: 7;
+    display: block !important;
+    opacity: 1 !important;
+}
+
+/* Texto guía */
+.qr-guide-text {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+    animation: qrGuideText 4s ease-in-out infinite;
+    z-index: 8;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animaciones */
+@keyframes qrCornerPulse {
+
+    0%,
+    100% {
+        border-color: var(--color-primary);
+        opacity: 1;
+    }
+
+    50% {
+        border-color: var(--color-primary-light);
+        opacity: 0.8;
+    }
+}
+
+@keyframes qrScanLine {
+    0% {
+        top: 5px;
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    50% {
+        top: calc(50% - 2px);
+        opacity: 0.9;
+        transform: scaleX(0.9);
+    }
+
+    100% {
+        top: calc(100% - 8px);
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes qrGuideText {
+
+    0%,
+    70%,
+    100% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 0.5;
+    }
+}
+
+/* Estados del escáner */
+.qr-scanning .qr-corner {
+    border-color: var(--color-primary);
+    animation-duration: 1.8s;
+    border-width: 4px;
+}
+
+.qr-scanning .qr-scanner-overlay::before {
+    border-color: rgba(37, 99, 235, 0.4);
+}
+
+.qr-detected .qr-corner {
+    border-color: var(--color-success);
+    border-width: 5px;
+    animation: qrCornerSuccess 0.8s ease-out;
+}
+
+.qr-detected .qr-scan-line {
+    background: linear-gradient(90deg, transparent 20%, var(--color-success) 50%, transparent 80%);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.9);
+    animation: qrScanSuccess 0.8s ease-out;
+    height: 4px;
+}
+
+.qr-detected .qr-guide-text {
+    background: rgba(16, 185, 129, 0.9);
+    color: var(--color-white);
+    animation: none;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.qr-detected .qr-scanner-overlay::before {
+    border-color: rgba(25, 135, 84, 0.6);
+    background: rgba(25, 135, 84, 0.05);
+}
+
+@keyframes qrCornerSuccess {
+    0% {
+        border-color: var(--color-primary);
+        transform: scale(1);
+    }
+
+    50% {
+        border-color: var(--color-success);
+        transform: scale(1.1);
+    }
+
+    100% {
+        border-color: var(--color-success);
+        transform: scale(1);
+    }
+}
+
+@keyframes qrScanSuccess {
+    0% {
+        background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    }
+
+    100% {
+        background: linear-gradient(90deg, transparent, var(--color-success), transparent);
+    }
+}
+
+/* Responsive para QR */
+@media (max-width: 768px) {
+    .qr-scanner-manual .display-1 {
+        font-size: 3rem;
+    }
+
+    .qr-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .qr-actions .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .qr-detection-overlay {
+        border-radius: 8px;
+    }
+
+    .qr-corner {
+        width: 35px;
+        height: 35px;
+        border-width: 3px;
+    }
+
+    .qr-corner-top-left,
+    .qr-corner-top-right {
+        top: 8px;
+    }
+
+    .qr-corner-bottom-left,
+    .qr-corner-bottom-right {
+        bottom: 8px;
+    }
+
+    .qr-corner-top-left,
+    .qr-corner-bottom-left {
+        left: 8px;
+    }
+
+    .qr-corner-top-right,
+    .qr-corner-bottom-right {
+        right: 8px;
+    }
+
+    .qr-guide-text {
+        font-size: 10px;
+        padding: 4px 8px;
+        bottom: 12px;
+    }
+
+    .qr-scan-line {
+        height: 2px;
+        left: 8px;
+        right: 8px;
+    }
+
+    .qr-loading-container {
+        height: 250px;
+    }
+
+    .qr-loading-spinner {
+        width: 50px;
+        height: 50px;
+    }
+
+    .qr-loading-spinner i {
+        font-size: 20px;
+    }
+}
+
+/* Estilos para resultados del escáner QR */
+#qrSearchResult .alert {
+    border: none;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+    border-radius: 12px;
+}
+
+#qrSearchResult h6 {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+#foundProductInfo {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+#foundProductInfo h5 {
+    color: var(--color-success);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#foundProductInfo .badge {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    margin: 2px;
+}
+
+#qrNotFound .alert {
+    border: none;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+    border-radius: 12px;
+}
+
+/* ===== CLASES DE UTILIDAD PARA PALETA ESTANDARIZADA ===== */
+
+/* Clases de colores primarios */
+.bg-primary-custom {
+    background-color: var(--color-primary) !important;
+}
+
+.bg-primary-dark-custom {
+    background-color: var(--color-primary-dark) !important;
+}
+
+.bg-primary-light-custom {
+    background-color: var(--color-primary-light) !important;
+}
+
+.bg-primary-pale-custom {
+    background-color: var(--color-primary-pale) !important;
+}
+
+.text-primary-custom {
+    color: var(--color-primary) !important;
+}
+
+.text-primary-dark-custom {
+    color: var(--color-primary-dark) !important;
+}
+
+/* Clases de estados */
+.bg-success-custom {
+    background-color: var(--color-success) !important;
+}
+
+.bg-success-pale-custom {
+    background-color: var(--color-success-pale) !important;
+}
+
+.text-success-custom {
+    color: var(--color-success) !important;
+}
+
+.text-success-dark-custom {
+    color: var(--color-success-dark) !important;
+}
+
+.bg-warning-custom {
+    background-color: var(--color-warning) !important;
+}
+
+.bg-warning-pale-custom {
+    background-color: var(--color-warning-pale) !important;
+}
+
+.text-warning-custom {
+    color: var(--color-warning) !important;
+}
+
+.text-warning-dark-custom {
+    color: var(--color-warning-dark) !important;
+}
+
+.bg-danger-custom {
+    background-color: var(--color-danger) !important;
+}
+
+.bg-danger-pale-custom {
+    background-color: var(--color-danger-pale) !important;
+}
+
+.text-danger-custom {
+    color: var(--color-danger) !important;
+}
+
+.text-danger-dark-custom {
+    color: var(--color-danger-dark) !important;
+}
+
+.bg-info-custom {
+    background-color: var(--color-info) !important;
+}
+
+.bg-info-pale-custom {
+    background-color: var(--color-info-pale) !important;
+}
+
+.text-info-custom {
+    color: var(--color-info) !important;
+}
+
+.text-info-dark-custom {
+    color: var(--color-info-dark) !important;
+}
+
+/* Clases de grises */
+.bg-gray-50-custom {
+    background-color: var(--color-gray-50) !important;
+}
+
+.bg-gray-100-custom {
+    background-color: var(--color-gray-100) !important;
+}
+
+.bg-gray-200-custom {
+    background-color: var(--color-gray-200) !important;
+}
+
+.bg-gray-300-custom {
+    background-color: var(--color-gray-300) !important;
+}
+
+.text-gray-400-custom {
+    color: var(--color-gray-400) !important;
+}
+
+.text-gray-500-custom {
+    color: var(--color-gray-500) !important;
+}
+
+.text-gray-600-custom {
+    color: var(--color-gray-600) !important;
+}
+
+.text-gray-700-custom {
+    color: var(--color-gray-700) !important;
+}
+
+/* Clases de sombras */
+.shadow-sm-custom {
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow-md-custom {
+    box-shadow: var(--shadow-md) !important;
+}
+
+.shadow-lg-custom {
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.shadow-xl-custom {
+    box-shadow: var(--shadow-xl) !important;
+}
+
+/* Clases de gradientes */
+.gradient-primary-custom {
+    background: var(--gradient-primary) !important;
+}
+
+.gradient-success-custom {
+    background: var(--gradient-success) !important;
+}
+
+.gradient-subtle-custom {
+    background: var(--gradient-subtle) !important;
+}
+
+/* Override de colores de Bootstrap para mantener consistencia */
+.btn-primary {
+    background-color: var(--color-primary) !important;
+    border: 2px solid var(--color-primary-dark) !important;
+    color: var(--color-white) !important;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark) !important;
+    border: 2px solid var(--color-primary-dark) !important;
+    color: var(--color-white) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-success {
+    background-color: var(--color-success-pale) !important;
+    border-color: var(--color-success) !important;
+    color: var(--color-success-dark) !important;
+}
+
+.btn-success:hover {
+    background-color: var(--color-success) !important;
+    border-color: var(--color-success-dark) !important;
+    color: var(--color-white) !important;
+}
+
+.btn-warning {
+    background-color: var(--color-warning) !important;
+    border: 2px solid var(--color-warning-dark) !important;
+    color: var(--color-white) !important;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-warning:hover {
+    background-color: var(--color-warning-dark) !important;
+    border: 2px solid var(--color-warning-dark) !important;
+    color: var(--color-white) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-danger {
+    background-color: var(--color-danger) !important;
+    border: 2px solid var(--color-danger-dark) !important;
+    color: var(--color-white) !important;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-danger:hover {
+    background-color: var(--color-danger-dark) !important;
+    border: 2px solid var(--color-danger-dark) !important;
+    color: var(--color-white) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-info {
+    background-color: var(--color-warning-pale) !important;
+    border-color: var(--color-warning) !important;
+    color: var(--color-warning-dark) !important;
+}
+
+.btn-info:hover {
+    background-color: var(--color-warning) !important;
+    border-color: var(--color-warning-dark) !important;
+    color: var(--color-white) !important;
+}
+
+.btn-secondary {
+    background-color: var(--color-gray-200) !important;
+    border-color: var(--color-gray-300) !important;
+    color: var(--color-gray-700) !important;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-gray-300) !important;
+    border-color: var(--color-gray-400) !important;
+    color: var(--color-gray-800) !important;
+}
+
+.btn-light {
+    background-color: var(--color-primary-pale) !important;
+    border-color: var(--color-gray-300) !important;
+    color: var(--color-gray-700) !important;
+}
+
+.btn-light:hover {
+    background-color: var(--color-gray-100) !important;
+    border-color: var(--color-gray-400) !important;
+    color: var(--color-gray-800) !important;
+}
+
+/* Botones outline mejorados */
+.btn-outline-primary {
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-white) !important;
+}
+
+.btn-outline-secondary {
+    border-color: var(--color-gray-400) !important;
+    color: var(--color-gray-600) !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--color-gray-200) !important;
+    border-color: var(--color-gray-400) !important;
+    color: var(--color-gray-800) !important;
+}
+
+/* Arreglar iconos en botón outline secondary */
+.btn-outline-secondary i,
+.btn-outline-secondary .fas,
+.btn-outline-secondary .fa {
+    color: var(--color-gray-600) !important;
+}
+
+.btn-outline-secondary:hover i,
+.btn-outline-secondary:hover .fas,
+.btn-outline-secondary:hover .fa {
+    color: var(--color-gray-800) !important;
+}
+
+/* Botones de cancelar específicos */
+.btn-cancel,
+.btn[data-bs-dismiss="modal"] {
+    background-color: var(--color-gray-100) !important;
+    border: 2px solid var(--color-gray-300) !important;
+    color: var(--color-gray-700) !important;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel:hover,
+.btn[data-bs-dismiss="modal"]:hover {
+    background-color: var(--color-gray-200) !important;
+    border-color: var(--color-gray-400) !important;
+    color: var(--color-gray-800) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Bootstrap alerts con nuevos colores */
+.alert-primary {
+    background-color: var(--color-primary-pale) !important;
+    color: var(--color-primary-dark) !important;
+    border-color: var(--color-primary) !important;
+}
+
+.alert-success {
+    background-color: var(--color-success-pale) !important;
+    color: var(--color-success-dark) !important;
+    border-color: var(--color-success) !important;
+}
+
+.alert-warning {
+    background-color: var(--color-warning-pale) !important;
+    color: var(--color-warning-dark) !important;
+    border-color: var(--color-warning) !important;
+}
+
+.alert-danger {
+    background-color: var(--color-danger-pale) !important;
+    color: var(--color-danger-dark) !important;
+    border-color: var(--color-danger) !important;
+}
+
+.alert-info {
+    background-color: var(--color-info-pale) !important;
+    color: var(--color-info-dark) !important;
+    border-color: var(--color-info) !important;
+}
+
+/* ===== MEJORAS ESPECÍFICAS PARA TEMA VERDE NATURAL ===== */
+
+/* Navbar con tema verde */
+.navbar-brand {
+    color: var(--color-primary-dark) !important;
+    font-weight: 700;
+}
+
+.navbar {
+    background: linear-gradient(90deg, var(--color-primary-pale) 0%, var(--color-gray-50) 100%) !important;
+    border-bottom: 2px solid var(--color-primary-light);
+}
+
+/* Enlaces y botones en navbar */
+.navbar-nav .nav-link {
+    color: var(--color-primary-dark) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--color-primary) !important;
+    background-color: var(--color-primary-pale) !important;
+    border-radius: 6px;
+}
+
+/* Botón de cerrar sesión en navbar */
+.navbar .btn,
+.navbar-nav .btn {
+    background-color: var(--color-danger) !important;
+    border: 2px solid var(--color-danger-dark) !important;
+    color: var(--color-white) !important;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.navbar .btn:hover,
+.navbar-nav .btn:hover {
+    background-color: var(--color-danger-dark) !important;
+    border-color: var(--color-danger-dark) !important;
+    color: var(--color-white) !important;
+    transform: translateY(-1px);
+}
+
+/* Enlaces específicos de cerrar sesión */
+.logout-link,
+.btn-logout,
+a[href*="logout"],
+a[onclick*="logout"] {
+    background-color: var(--color-danger) !important;
+    border: 2px solid var(--color-danger-dark) !important;
+    color: var(--color-white) !important;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.logout-link:hover,
+.btn-logout:hover,
+a[href*="logout"]:hover,
+a[onclick*="logout"]:hover {
+    background-color: var(--color-danger-dark) !important;
+    border-color: var(--color-danger-dark) !important;
+    color: var(--color-white) !important;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Estilos específicos para iconos de Bootstrap si aún se usan */
+.bi,
+[class^="bi-"],
+[class*=" bi-"] {
+    color: var(--color-primary) !important;
+}
+
+.text-primary .bi,
+.text-primary [class^="bi-"],
+.text-primary [class*=" bi-"] {
+    color: var(--color-primary) !important;
+}
+
+.text-success .bi,
+.text-success [class^="bi-"],
+.text-success [class*=" bi-"] {
+    color: var(--color-success) !important;
+}
+
+.text-warning .bi,
+.text-warning [class^="bi-"],
+.text-warning [class*=" bi-"] {
+    color: var(--color-warning) !important;
+}
+
+.text-danger .bi,
+.text-danger [class^="bi-"],
+.text-danger [class*=" bi-"] {
+    color: var(--color-danger) !important;
+}
+
+.text-muted .bi,
+.text-muted [class^="bi-"],
+.text-muted [class*=" bi-"] {
+    color: var(--color-muted) !important;
+}
+
+/* Estilos específicos para iconos en tarjetas de estadísticas */
+.card.bg-primary .fas,
+.card.bg-primary .bi,
+.card.bg-success .fas,
+.card.bg-success .bi,
+.card.bg-warning .fas,
+.card.bg-warning .bi,
+.card.bg-danger .fas,
+.card.bg-danger .bi,
+.card .text-white.fas,
+.card .text-white.bi,
+.card .text-white .fas,
+.card .text-white .bi,
+.card.text-white .fas,
+.card.text-white .bi {
+    color: rgba(255, 255, 255, 1) !important;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.card:hover .fas,
+.card:hover .bi,
+.card:hover .text-white.fas,
+.card:hover .text-white.bi,
+.card:hover .text-white .fas,
+.card:hover .text-white .bi,
+.card.text-white:hover .fas,
+.card.text-white:hover .bi {
+    opacity: 1;
+    transform: scale(1.05);
+    color: rgba(255, 255, 255, 1) !important;
+}
+
+/* Sombras para mejor visibilidad */
+.card .display-4.fas,
+.card .display-4.bi {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* Contraste mejorado para tabla ya integrado en estilos principales */
+
+/* Arreglar contraste en navbar para fondo claro */
+.navbar-text,
+.navbar-text span {
+    color: var(--color-primary-dark) !important;
+    font-weight: 600 !important;
+}
+
+.navbar-text .fas,
+.navbar-text .fa {
+    color: var(--color-primary) !important;
+}
+
+/* Específicamente para el texto de bienvenida del usuario */
+#userWelcome {
+    color: var(--color-primary-dark) !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+}
+
+.navbar-text i+span {
+    color: var(--color-primary-dark) !important;
+    font-weight: 600 !important;
+}
+
+/* Arreglar copyright badge */
+.copyright-badge .bi,
+.copyright-badge .fas,
+.copyright-badge .fa {
+    color: var(--color-white) !important;
+}
+
+.copyright-content {
+    color: var(--color-white) !important;
+}
+
+/* Cards con mejor contraste */
+.card {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+}
+
+.card-header {
+    background: var(--gradient-primary) !important;
+    border-bottom: 1px solid var(--color-primary-light);
+}
+
+/* Botones con efectos mejorados */
+.btn-primary,
+.btn-edit {
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: var(--shadow-sm);
+    color: var(--color-white) !important;
+}
+
+.btn-success {
+    transition: all 0.3s ease;
+    border: 2px solid var(--color-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover,
+.btn-success:hover,
+.btn-edit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover,
+.btn-edit:hover {
+    color: var(--color-white) !important;
+}
+
+/* Inputs con mejor styling */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(62, 123, 39, 0.25);
+}
+
+/* Scanner QR con tema verde */
+.qr-corner {
+    border-color: var(--color-primary) !important;
+}
+
+.qr-scan-line {
+    background: linear-gradient(90deg, transparent 20%, var(--color-primary-light) 50%, transparent 80%);
+    box-shadow: 0 0 20px rgba(133, 169, 71, 0.7);
+}
+
+.qr-guide-text {
+    background: rgba(62, 123, 39, 0.9);
+    border-color: var(--color-primary-pale);
+}
+
+/* Estados mejorados */
+.status-instock {
+    background-color: var(--color-primary-pale);
+    color: var(--color-primary-dark);
+    border: 1px solid var(--color-primary);
+}
+
+.status-lowstock {
+    background-color: var(--color-warning-pale);
+    color: var(--color-warning-dark);
+    border: 1px solid var(--color-warning);
+}
+
+/* Tabla con mejor apariencia */
+.table thead th {
+    background-color: var(--color-primary-pale);
+    color: var(--color-primary-dark);
+    border-bottom: 2px solid var(--color-primary-light);
+}
+
+.table tbody tr:hover {
+    background-color: var(--color-primary-pale);
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* Footer de copyright mejorado */
+.copyright-badge {
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    border: 2px solid var(--color-primary-pale);
+}
+
+/* Efectos de hover mejorados para links */
+a {
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+}
+
+/* Iconos con colores de la paleta verde */
+.fa,
+.fas,
+.far,
+.fab,
+.fal,
+.fad,
+.fass,
+.fasl,
+.fasr,
+.faswsome {
+    color: var(--color-primary) !important;
+}
+
+/* Iconos específicos por contexto */
+.text-primary,
+.btn-primary i,
+.btn-primary .fa,
+.btn-primary .fas {
+    color: var(--color-white) !important;
+}
+
+.text-success,
+.btn-success i,
+.btn-success .fa,
+.btn-success .fas {
+    color: var(--color-success-dark) !important;
+}
+
+.text-danger,
+.btn-danger i,
+.btn-danger .fa,
+.btn-danger .fas {
+    color: var(--color-white) !important;
+}
+
+.text-warning,
+.btn-warning i,
+.btn-warning .fa,
+.btn-warning .fas {
+    color: var(--color-white) !important;
+}
+
+.text-info,
+.btn-info i,
+.btn-info .fa,
+.btn-info .fas {
+    color: var(--color-warning-dark) !important;
+}
+
+/* Hover de iconos en botones */
+.btn-success:hover i,
+.btn-success:hover .fa,
+.btn-success:hover .fas {
+    color: var(--color-white) !important;
+}
+
+.btn-info:hover i,
+.btn-info:hover .fa,
+.btn-info:hover .fas {
+    color: var(--color-white) !important;
+}
+
+/* Botones específicos en card-header para mejor contraste */
+.card-header .btn-info {
+    background-color: var(--color-warning) !important;
+    border: 2px solid var(--color-warning-dark) !important;
+    color: var(--color-white) !important;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+.card-header .btn-info:hover {
+    background-color: var(--color-warning-dark) !important;
+    border-color: var(--color-warning-dark) !important;
+    color: var(--color-white) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-header .btn-success {
+    background-color: var(--color-white) !important;
+    border: 2px solid var(--color-success) !important;
+    color: var(--color-success-dark) !important;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+.card-header .btn-success:hover {
+    background-color: var(--color-success) !important;
+    border-color: var(--color-success-dark) !important;
+    color: var(--color-white) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Iconos en botones del header */
+.card-header .btn-info i,
+.card-header .btn-info .fa,
+.card-header .btn-info .fas {
+    color: var(--color-white) !important;
+}
+
+.card-header .btn-success i,
+.card-header .btn-success .fa,
+.card-header .btn-success .fas {
+    color: var(--color-success-dark) !important;
+}
+
+.card-header .btn-success:hover i,
+.card-header .btn-success:hover .fa,
+.card-header .btn-success:hover .fas {
+    color: var(--color-white) !important;
+}
+
+/* Iconos en navbar */
+.navbar .fa,
+.navbar .fas,
+.navbar i {
+    color: var(--color-primary-dark) !important;
+}
+
+/* Iconos en botones de acción */
+.btn-edit i,
+.btn-delete i,
+.btn-qr i {
+    color: var(--color-white) !important;
+}
+
+.btn-qr i {
+    color: var(--color-primary-dark) !important;
+}
+
+/* Clase auxiliar para color blanco */
+.color-white {
+    color: var(--color-white) !important;
+}
+
+/* Íconos blancos en notificaciones y toasts */
+.toast .color-white,
+.toast-body .color-white {
+    color: var(--color-white) !important;
+}
+
+/* Íconos blancos en mensajes de estado */
+.text-success .color-white,
+.text-info .color-white,
+.text-warning .color-white,
+.text-danger .color-white,
+.text-muted .color-white {
+    color: var(--color-white) !important;
+}
+
+/* Íconos blancos en badges */
+.badge .color-white,
+.badge i.color-white {
+    color: var(--color-white) !important;
+}

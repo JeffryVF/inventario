@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogiTrack - Grupo 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Pantalla de Login -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-form">
+            <div class="text-center mb-4">
+                <i class="fas fa-boxes display-4 text-primary-dark-custom"></i>
+                <h2 class="mt-3">LogiTrack</h2>
+                <p class="text-muted">Ingresa tus credenciales</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mb-3">
+                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                </button>
+            </form>
+            <div id="loginError" class="alert alert-danger d-none"></div>
+        </div>
+    </div>
+
+    <!-- Dashboard Principal -->
+    <div id="dashboardScreen" class="d-none">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-boxes"></i> LogiTrack
+                </a>
+                <div class="navbar-nav ms-auto">
+                    <span class="navbar-text me-3">
+                        <i class="fas fa-user-circle"></i> <span id="userWelcome"></span>
+                    </span>
+                    <button class="btn btn-outline-danger btn-sm logout-link" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenido Principal -->
+        <div class="container-fluid mt-4">
+            <!-- Stats Cards -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4 id="totalProducts">0</h4>
+                                    <p class="card-text">Total Productos</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-boxes display-4 text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-success">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4 id="inStock">0</h4>
+                                    <p class="card-text">En Stock</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-check-circle display-4 text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-warning">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4 id="lowStock">0</h4>
+                                    <p class="card-text">Stock Bajo</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-exclamation-triangle display-4 text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-danger">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4 id="outOfStock">0</h4>
+                                    <p class="card-text">Sin Stock</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-times-circle display-4 text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles y Tabla -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0"><i class="fas fa-table"></i> Gestión de Productos</h5>
+                            <div>
+                                <button class="btn btn-info me-2" data-bs-toggle="modal" data-bs-target="#scanQrModal">
+                                    <i class="fas fa-qrcode"></i> Escanear QR
+                                </button>
+                                <button class="btn btn-success" id="addProductBtn">
+                                    <i class="fas fa-plus-circle"></i> Agregar Producto
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- Filtros -->
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="searchInput"
+                                        placeholder="Buscar productos...">
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select" id="categoryFilter">
+                                        <option value="">Todas las categorías</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select" id="stockFilter">
+                                        <option value="">Todos los estados</option>
+                                        <option value="instock">En Stock</option>
+                                        <option value="lowstock">Stock Bajo</option>
+                                        <option value="outstock">Sin Stock</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-outline-secondary w-100" id="clearFilters">
+                                        <i class="fas fa-times"></i> Limpiar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Tabla -->
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Producto</th>
+                                            <th>Categoría</th>
+                                            <th>Stock</th>
+                                            <th>Stock Mínimo</th>
+                                            <th>Precio</th>
+                                            <th>Estado</th>
+                                            <th>QR</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="productsTable">
+                                        <!-- Los productos se cargarán aquí dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="noProducts" class="text-center py-5 d-none">
+                                <i class="fas fa-boxes display-1 text-muted"></i>
+                                <p class="text-muted">No hay productos registrados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer sutil -->
+        <footer class="mt-auto py-2">
+            <div class="container-fluid">
+                <div class="text-center">
+                    <small class="text-muted opacity-75">
+                        © 2025 Sistema de Inventarios - Desarrollado por Grupo 9
+                    </small>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal para Agregar/Editar Producto -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Agregar Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="productForm">
+                        <input type="hidden" id="productId">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="productCode" class="form-label">Código del Producto *</label>
+                                    <input type="text" class="form-control" id="productCode" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="productName" class="form-label">Nombre del Producto *</label>
+                                    <input type="text" class="form-control" id="productName" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="productCategory" class="form-label">Categoría *</label>
+                                    <input type="text" class="form-control" id="productCategory" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="productPrice" class="form-label">Precio *</label>
+                                    <input type="number" class="form-control" id="productPrice" step="0.01" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="productStock" class="form-label">Stock Actual *</label>
+                                    <input type="number" class="form-control" id="productStock" min="0" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="productMinStock" class="form-label">Stock Mínimo *</label>
+                                    <input type="number" class="form-control" id="productMinStock" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="productDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="productDescription" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveProductBtn">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación -->
+    <div class="modal fade" id="confirmModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar Acción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar QR del producto -->
+    <div class="modal fade" id="qrModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-qrcode"></i> Código QR del Producto
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div id="qrProductInfo" class="mb-3">
+                        <h6 id="qrProductName"></h6>
+                        <p class="text-muted mb-1">Código: <span id="qrProductCode"></span></p>
+                        <p class="text-success mb-3">Stock: <span id="qrProductStock"></span> unidades</p>
+                    </div>
+                    <div id="qrCodeDisplay" class="mb-3"></div>
+                    <div class="qr-actions">
+                        <button class="btn btn-primary btn-sm" onclick="downloadQR()">
+                            <i class="fas fa-download"></i> Descargar QR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para escanear QR -->
+    <div class="modal fade" id="scanQrModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-qrcode"></i> Escanear Código QR
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Pestañas para alternar entre cámara y manual -->
+                    <ul class="nav nav-tabs mb-3" id="scannerTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="camera-tab" data-bs-toggle="tab"
+                                data-bs-target="#camera-pane" type="button" role="tab">
+                                <i class="fas fa-camera"></i> Cámara
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="manual-tab" data-bs-toggle="tab" data-bs-target="#manual-pane"
+                                type="button" role="tab">
+                                <i class="fas fa-keyboard"></i> Manual
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="scannerTabContent">
+                        <!-- Pestaña de cámara -->
+                        <div class="tab-pane fade show active" id="camera-pane" role="tabpanel">
+                            <div id="qrScanner" class="text-center p-3">
+                                <div class="mb-3">
+                                    <h6><i class="fas fa-camera"></i> Escaneo con Cámara</h6>
+                                    <p class="text-muted mb-2">Apunta la cámara hacia el código QR</p>
+                                </div>
+
+                                <div class="qr-scanner-container d-flex justify-content-center align-items-center">
+                                    <div id="qr-reader" class="mx-auto" style="max-width: 400px;">
+                                        <!-- Indicador de carga -->
+                                        <div id="qr-loading-indicator" class="qr-loading-container">
+                                            <div class="qr-loading-content">
+                                                <div class="qr-loading-spinner">
+                                                    <i class="fas fa-video"></i>
+                                                </div>
+                                                <h6 class="mt-3 text-muted">Iniciando cámara...</h6>
+                                                <div class="loading-dots">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Área para el video del scanner (se creará dinámicamente) -->
+                                    </div>
+
+                                    <!-- Esquinas del escáner QR (se posicionarán dinámicamente sobre el video) -->
+                                    <div id="qr-scanner-overlay" class="qr-scanner-overlay" style="display: none;">
+                                        <div class="qr-corner qr-corner-top-left"></div>
+                                        <div class="qr-corner qr-corner-top-right"></div>
+                                        <div class="qr-corner qr-corner-bottom-left"></div>
+                                        <div class="qr-corner qr-corner-bottom-right"></div>
+
+                                        <!-- Línea de escaneo animada -->
+                                        <div class="qr-scan-line"></div>
+
+                                        <!-- Texto guía -->
+                                        <div class="qr-guide-text">
+                                            <span>Coloque el código QR dentro del marco</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Indicador de detección -->
+                                    <div id="qr-detection-indicator" class="qr-detection-overlay"
+                                        style="display: none;">
+                                        <div class="qr-detection-content">
+                                            <i class="bi bi-check-circle-fill text-success display-4"></i>
+                                            <h5 class="text-success mt-2">¡QR Detectado!</h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <button class="btn btn-success" id="startCamera" style="display: none;">
+                                        <i class="bi bi-play"></i> Iniciar Cámara
+                                    </button>
+                                    <button class="btn btn-danger" id="stopCamera" style="display: none;">
+                                        <i class="bi bi-stop"></i> Detener Cámara
+                                    </button>
+                                </div>
+
+                                <div id="cameraStatus" class="mt-2">
+                                    <small class="text-muted">Preparando cámara...</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pestaña manual -->
+                        <div class="tab-pane fade" id="manual-pane" role="tabpanel">
+                            <div class="qr-scanner-manual text-center p-4">
+                                <div class="mb-4">
+                                    <i class="fas fa-qrcode display-1 text-primary-dark-custom"></i>
+                                    <h5 class="mt-2">Búsqueda Manual</h5>
+                                    <p class="text-muted">Introduce el código del producto manualmente</p>
+                                </div>
+
+                                <div class="manual-input-container p-4 border rounded">
+                                    <div class="mb-3">
+                                        <label for="manualQrCode" class="form-label">
+                                            <i class="bi bi-keyboard"></i> Código del producto:
+                                        </label>
+                                        <input type="text" class="form-control form-control-lg" id="manualQrCode"
+                                            placeholder="Ej: PROD001, PROD002..." autocomplete="off">
+                                    </div>
+
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary btn-lg" id="searchByQrCode">
+                                            <i class="bi bi-search"></i> Buscar Producto
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resultado de la búsqueda -->
+                    <div id="qrSearchResult" class="mt-4" style="display: none;">
+                        <div class="alert alert-success text-center">
+                            <h6><i class="bi bi-check-circle"></i> Producto Encontrado:</h6>
+                            <div id="foundProductInfo" class="text-center"></div>
+                        </div>
+                    </div>
+
+                    <!-- No encontrado -->
+                    <div id="qrNotFound" class="mt-4" style="display: none;">
+                        <div class="alert alert-warning text-center">
+                            <h6><i class="bi bi-exclamation-triangle"></i> Producto No Encontrado</h6>
+                            <p class="mb-0">No se encontró ningún producto con ese código.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marca de derechos de autor flotante -->
+    <div class="copyright-badge">
+        <div class="copyright-content">
+            <i class="bi bi-c-circle"></i>
+            <span class="copyright-text">Grupo 9<br><small>Fundamentos de administración de proyectos</small></span>
+        </div>
+    </div>
+
+    <!-- Librería de escaneo QR con ZXing -->
+    <script src="https://unpkg.com/@zxing/library@latest/umd/index.min.js"></script>
+    <script>
+        // Verificar que ZXing se carga correctamente
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                console.log('🔍 Estado de ZXing:', typeof ZXing);
+                if (typeof ZXing !== 'undefined') {
+                    console.log('✅ ZXing cargado correctamente');
+                    console.log('📋 Métodos disponibles:', Object.keys(ZXing));
+                } else {
+                    console.error('❌ ZXing no se pudo cargar');
+                }
+            }, 1000);
+        });
+    </script>
+
+    <!-- Generador QR simple (independiente de CDN) -->
+    <script>
+        // Generador QR básico que funciona sin librerías externas
+        function createSimpleQR(text, size = 200) {
+            // Usaremos una API de QR gratuita como fallback
+            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(text)}`;
+
+            const img = document.createElement('img');
+            img.src = qrApiUrl;
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
+            img.style.border = '2px solid #dee2e6';
+            img.style.borderRadius = '8px';
+            img.alt = `QR Code: ${text}`;
+            img.title = `Código QR para: ${text}`;
+
+            // Fallback si no hay internet
+            img.onerror = function () {
+                const fallbackDiv = document.createElement('div');
+                fallbackDiv.className = 'alert alert-info text-center p-4';
+                fallbackDiv.innerHTML = `
+                    <h6><i class="bi bi-qr-code"></i> Código QR</h6>
+                    <div class="btn btn-primary btn-sm">${text}</div>
+                    <p class="mb-0 small text-muted">QR no disponible sin conexión</p>
+                `;
+                img.parentNode.replaceChild(fallbackDiv, img);
+            };
+
+            return img;
+        }
+
+        // Escáner QR simple usando la cámara del navegador
+        class SimpleQRScanner {
+            constructor(videoElement, onResult) {
+                this.video = videoElement;
+                this.onResult = onResult;
+                this.stream = null;
+                this.scanning = false;
+            }
+
+            async start() {
+                try {
+                    this.stream = await navigator.mediaDevices.getUserMedia({
+                        video: { facingMode: 'environment' }
+                    });
+                    this.video.srcObject = this.stream;
+                    this.video.play();
+                    this.scanning = true;
+
+                    // Iniciar detección simple (requiere que el usuario mantenga el QR visible)
+                    this.startDetection();
+                    return true;
+                } catch (error) {
+                    console.error('Error accediendo a la cámara:', error);
+                    return false;
+                }
+            }
+
+            stop() {
+                this.scanning = false;
+                if (this.stream) {
+                    this.stream.getTracks().forEach(track => track.stop());
+                    this.stream = null;
+                }
+                if (this.video) {
+                    this.video.srcObject = null;
+                }
+            }
+
+            startDetection() {
+                // Implementación con ZXing para detección real de QR
+                if (typeof ZXing !== 'undefined') {
+                    this.codeReader = new ZXing.BrowserQRCodeReader();
+                    this.detectQR();
+                } else {
+                    console.log('ZXing no disponible - usar input manual para códigos QR');
+                }
+            }
+
+            detectQR() {
+                if (!this.scanning || !this.codeReader) return;
+
+                this.codeReader.decodeOnceFromVideoDevice(undefined, this.video.id)
+                    .then((result) => {
+                        if (this.scanning && result) {
+                            this.onResult(result.text);
+                        }
+                    })
+                    .catch((err) => {
+                        // Continuar escaneando si no se encuentra QR
+                        if (this.scanning && err.name !== 'NotFoundException') {
+                            console.warn('Error escaneando:', err);
+                        }
+                        // Reintentar después de un breve delay
+                        if (this.scanning) {
+                            setTimeout(() => this.detectQR(), 100);
+                        }
+                    });
+            }
+
+            stop() {
+                this.scanning = false;
+                if (this.codeReader) {
+                    this.codeReader.reset();
+                }
+                if (this.stream) {
+                    this.stream.getTracks().forEach(track => track.stop());
+                    this.stream = null;
+                }
+                if (this.video) {
+                    this.video.srcObject = null;
+                }
+            }
+        }
+
+        // Scanner QR mejorado usando ZXing
+        class ZXingQRScanner {
+            constructor(elementId, onResult, onError) {
+                this.elementId = elementId;
+                this.onResult = onResult;
+                this.onError = onError || console.error;
+                this.codeReader = null;
+                this.scanning = false;
+            }
+
+            async start() {
+                try {
+                    if (typeof ZXing === 'undefined') {
+                        throw new Error('ZXing library not loaded');
+                    }
+
+                    this.codeReader = new ZXing.BrowserQRCodeReader();
+                    this.scanning = true;
+
+                    // Obtener dispositivos de video
+                    const videoInputDevices = await this.codeReader.listVideoInputDevices();
+
+                    if (videoInputDevices.length === 0) {
+                        throw new Error('No se encontraron cámaras');
+                    }
+
+                    // Preferir cámara trasera si está disponible
+                    let selectedDevice = videoInputDevices[0];
+                    for (let device of videoInputDevices) {
+                        if (device.label.toLowerCase().includes('back') ||
+                            device.label.toLowerCase().includes('rear') ||
+                            device.label.toLowerCase().includes('environment')) {
+                            selectedDevice = device;
+                            break;
+                        }
+                    }
+
+                    // Iniciar escaneo
+                    await this.codeReader.decodeFromVideoDevice(
+                        selectedDevice.deviceId,
+                        this.elementId,
+                        (result, error) => {
+                            if (result && this.scanning) {
+                                this.onResult(result.text);
+                                this.stop();
+                            }
+                            if (error && error.name !== 'NotFoundException') {
+                                console.warn('Scan error:', error);
+                            }
+                        }
+                    );
+
+                    return true;
+                } catch (error) {
+                    this.onError('Error iniciando escáner: ' + error.message);
+                    return false;
+                }
+            }
+
+            stop() {
+                this.scanning = false;
+                if (this.codeReader) {
+                    this.codeReader.reset();
+                    this.codeReader = null;
+                }
+            }
+        }
+
+        // Variables globales para compatibilidad
+        window.SimpleQRScanner = SimpleQRScanner;
+        window.ZXingQRScanner = ZXingQRScanner;
+        window.createSimpleQR = createSimpleQR;
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
